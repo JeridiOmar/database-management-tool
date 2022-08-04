@@ -1,5 +1,6 @@
 package com.example.databasemanagementtool.service;
 
+import com.example.databasemanagementtool.dto.DiffDto;
 import liquibase.Liquibase;
 import liquibase.database.Database;
 import liquibase.database.DatabaseFactory;
@@ -18,7 +19,11 @@ import java.sql.Connection;
 
 @Service
 public class ManagementService {
-    void diff(Connection referenceConnection, Connection targetConnection) throws LiquibaseException, IOException, ParserConfigurationException {
+
+    public void diff(DiffDto diffDto) throws LiquibaseException {
+
+        Connection referenceConnection;
+        Connection targetConnection;
 
         Liquibase liquibase = null;
 
@@ -31,6 +36,8 @@ public class ManagementService {
             DiffResult diffResult = liquibase.diff(referenceDatabase, targetDatabase, new CompareControl());
             new DiffToChangeLog(diffResult, new DiffOutputControl()).print(System.out);
 
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             if (liquibase != null) {
                 liquibase.forceReleaseLocks();
