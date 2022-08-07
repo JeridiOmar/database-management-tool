@@ -1,10 +1,12 @@
 package com.example.databasemanagementtool.dto;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@Data
 public class DiffDto {
 
     private String url;
@@ -13,10 +15,10 @@ public class DiffDto {
 
     private String password;
 
-    private String ReferenceUrl;
+    private String referenceUrl;
 
-    private String ReferenceUserName;
+    private String referenceUserName;
 
-    private String ReferencePassword;
+    private String referencePassword;
 
 }

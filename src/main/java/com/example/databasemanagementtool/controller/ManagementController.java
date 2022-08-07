@@ -16,9 +16,9 @@ public class ManagementController {
     @Autowired
     ManagementService managementService;
 
-    @PostMapping("/diff")
+    @PostMapping("/diff-log")
     public void diff(@RequestBody DiffDto diffDto) throws LiquibaseException {
-        this.managementService.diff(diffDto);
+        this.managementService.diffLog(diffDto);
     }
 
 }
