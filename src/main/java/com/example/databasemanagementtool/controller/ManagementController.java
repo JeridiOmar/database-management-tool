@@ -1,6 +1,7 @@
 package com.example.databasemanagementtool.controller;
 
 import com.example.databasemanagementtool.dto.DiffDto;
+import com.example.databasemanagementtool.dto.GenChangelogDto;
 import com.example.databasemanagementtool.service.ManagementService;
 import liquibase.exception.LiquibaseException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,10 @@ public class ManagementController {
     @PostMapping("/diff-log")
     public void diff(@RequestBody DiffDto diffDto) throws LiquibaseException {
         this.managementService.diffLog(diffDto);
+    }
+    @PostMapping("/gen-log")
+    public void genLog(@RequestBody GenChangelogDto genChangelogDto) throws LiquibaseException {
+        this.managementService.generateLog(genChangelogDto);
     }
 
 }
